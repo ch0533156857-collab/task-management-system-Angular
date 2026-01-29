@@ -1,0 +1,57 @@
+<div class="task-create-wrapper">
+  <div class="task-form-container graffiti-card">
+    <div class="form-header">
+      <h2 class="form-title">🎨 CREATE NEW TASK</h2>
+      <div class="title-underline"></div>
+    </div>
+
+    <form [formGroup]="taskForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label class="form-label">Task Title</label>
+        <input 
+          type="text" 
+          formControlName="title" 
+          placeholder="What needs to be done?"
+          class="form-input"
+        >
+        @if (taskForm.get('title')?.hasError('required') && taskForm.get('title')?.touched) {
+          <span class="form-error">Title is required</span>
+        }
+        @if (taskForm.get('title')?.hasError('minlength') && taskForm.get('title')?.touched) {
+          <span class="form-error">Title must be at least 3 characters</span>
+        }
+      </div>
+
+      <div class="form-row">
+        <select formControlName="status" class="form-select">
+          @for (option of statusOptions; track option.value) {
+            <option [value]="option.value">{{ option.label }}</option>
+          }
+        </select>
+
+        <select formControlName="priority" class="form-select">
+          @for (option of priorityOptions; track option.value) {
+            <option [value]="option.value">{{ option.label }}</option>
+          }
+        </select>
+      </div>
+
+      @if (errorMessage()) {
+        <p class="error-message">⚠️ {{ errorMessage() }}</p>
+      }
+
+      <div class="actions">
+        <button type="button" (click)="onCancel()" [disabled]="isLoading()" class="graffiti-btn graffiti-btn-secondary">
+          Cancel
+        </button>
+        <button type="submit" [disabled]="taskForm.invalid || isLoading()" class="graffiti-btn graffiti-btn-primary spray-paint-btn">
+          @if (isLoading()) { 
+            <app-loading-spinner [isInline]="true"></app-loading-spinner> 
+          } @else { 
+            🎨 Create Task 
+          }
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

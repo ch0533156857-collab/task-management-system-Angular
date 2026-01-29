@@ -1,0 +1,29 @@
+<div class="graffiti-sidebar" [class.collapsed]="isCollapsed()" appClickOutside (clickOutside)="onClickOutside()">
+  <nav class="sidebar-nav">
+    @for (item of menuItems; track item.route) {
+      <a (click)="navigateTo(item.route)" 
+     [class.active-menu]="router.url.includes(item.route)" 
+     class="menu-item"
+     style="cursor: pointer;">
+           <span class="menu-icon">
+          @switch(item.label) {
+            @case('Login') { 🚀 }
+            @case('Register') { ✍️ }
+            @case('Projects') { 📁 }
+            @case('Teams') { 👥 }
+            @case('Tasks') { 📝 }
+            @case('Settings') { ⚙️ }
+            @default { 📌 }
+          }
+        </span>
+        @if (!isCollapsed()) {
+          <span class="menu-label">{{ item.label }}</span>
+        }
+      </a>
+    }
+
+  </nav>
+  <button (click)="toggleSidebar()" class="toggle-btn graffiti-btn graffiti-btn-primary">
+    {{ isCollapsed() ? '→' : '←' }}
+  </button>
+</div>

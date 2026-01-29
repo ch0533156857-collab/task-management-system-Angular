@@ -1,0 +1,38 @@
+<div class="comments-section">
+  <div class="comments-header">
+    <h3 class="comments-title">💬 Comments ({{ comments().length }})</h3>
+    <div class="comments-divider"></div>
+  </div>
+
+  <app-comment-create 
+    [taskId]="taskId()" 
+    (commentAdded)="onCommentAdded($event)">
+  </app-comment-create>
+
+  @if (isLoading()) {
+    <div class="loading-container">
+      <app-loading-spinner></app-loading-spinner>
+      <p class="loading-text">Loading comments...</p>
+    </div>
+  } @else {
+    <div class="comments-list">
+      @for (comment of comments(); track comment.id) {
+        <div class="comment-item graffiti-card">
+          <div class="comment-header">
+            <div class="comment-user">
+              <span class="user-badge">👤</span>
+              <strong class="user-name">{{ comment.user_id }}</strong>
+            </div>
+            <span class="comment-date">📅 {{ comment.created_at | date: 'short' }}</span>
+          </div>
+          <p class="comment-body">{{ comment.body }}</p>
+        </div>
+      } @empty {
+        <div class="empty-state">
+          <p class="empty-icon">🗨️</p>
+          <p class="empty-text">No comments yet. Be the first to comment!</p>
+        </div>
+      }
+    </div>
+  }
+</div>

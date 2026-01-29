@@ -1,0 +1,87 @@
+.graffiti-container {
+  padding: 30px;
+  background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%);
+  min-height: calc(100vh - 64px);
+}
+
+.board-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 40px;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.graffiti-title {
+  font-family: 'Rubik Mono One', sans-serif;
+  font-size: 36px;
+  text-transform: uppercase;
+  background: linear-gradient(135deg, #A855F7, #EC4899);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  letter-spacing: 2px;
+  margin: 0;
+  font-weight: 900;
+}
+
+.task-board {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 24px;
+}
+
+.board-column {
+  background: linear-gradient(135deg, rgba(168, 85, 247, 0.1), rgba(236, 72, 153, 0.05));
+  border: 3px solid #A855F7;
+  border-radius: 12px;
+  padding: 20px;
+  min-height: 400px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 0 20px rgba(168, 85, 247, 0.2);
+}
+
+.column-title {
+  font-family: 'Fredoka One', sans-serif;
+  font-size: 18px;
+  color: #06B6D4;
+  margin: 0 0 16px 0;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 900;
+}
+
+.tasks-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  flex: 1;
+  overflow-y: auto;
+  max-height: 600px;
+}
+
+.empty-column {
+  text-align: center;
+  color: #64748B;
+  font-style: italic;
+  padding: 60px 20px;
+  margin: 0;
+  font-size: 14px;
+}
+
+@media (max-width: 768px) {
+  .graffiti-container {
+    padding: 16px;
+  }
+  .task-board {
+    grid-template-columns: 1fr;
+  }
+  .graffiti-title {
+    font-size: 24px;
+  }
+  .board-column {
+    min-height: 250px;
+  }
+}

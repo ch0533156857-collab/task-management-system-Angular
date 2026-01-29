@@ -1,0 +1,71 @@
+.graffiti-container {
+  padding: 30px;
+  background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%);
+  min-height: calc(100vh - 64px);
+}
+
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 40px;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.graffiti-title {
+  font-family: 'Rubik Mono One', sans-serif;
+  font-size: 36px;
+  text-transform: uppercase;
+  background: linear-gradient(135deg, #A855F7, #EC4899);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  letter-spacing: 2px;
+  margin: 0;
+  font-weight: 900;
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 24px;
+}
+
+.empty-state {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 60px 20px;
+  font-size: 24px;
+  color: #CBD5E1;
+  font-family: 'Fredoka One', sans-serif;
+  text-transform: uppercase;
+}
+
+.error-banner {
+  background: linear-gradient(135deg, #EC4899, #F97316);
+  border: 3px solid #F97316;
+  border-radius: 8px;
+  padding: 16px 20px;
+  color: #FFF;
+  font-weight: 700;
+  font-size: 16px;
+  box-shadow: 4px 4px 0 rgba(237, 100, 166, 0.5);
+  animation: shake 0.3s ease;
+  margin-bottom: 20px;
+}
+
+@media (max-width: 768px) {
+  .graffiti-container {
+    padding: 20px;
+  }
+  .page-header {
+    flex-direction: column;
+  }
+  .graffiti-title {
+    font-size: 24px;
+  }
+  .projects-grid {
+    grid-template-columns: 1fr;
+  }
+}

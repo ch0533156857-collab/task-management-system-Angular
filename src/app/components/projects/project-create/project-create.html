@@ -1,0 +1,43 @@
+<div class="graffiti-container">
+  <div class="form-card graffiti-card">
+    <h2 class="graffiti-title">📁 Create New Project</h2>
+    
+    @if(errorMessage()) {
+      <div class="error-banner">💥 {{ errorMessage() }}</div>
+    }
+
+    <form [formGroup]="projectForm" (ngSubmit)="onSubmit()" class="graffiti-form">
+      <div class="form-group">
+        <label for="name">📝 Project Name:</label>
+        <input type="text" id="name" formControlName="name" placeholder="Enter project name..." class="graffiti-input" />
+        @if (projectForm.get('name')?.hasError('required') && projectForm.get('name')?.touched) {
+          <span class="error-text">Project name is required</span>
+        }
+      </div>
+
+      <div class="form-group">
+        <label for="description">✍️ Description:</label>
+        <textarea id="description" formControlName="description" placeholder="Project description..." class="graffiti-input"></textarea>
+      </div>
+
+      <div class="form-actions">
+        <button type="submit" class="graffiti-btn graffiti-btn-primary" [disabled]="projectForm.invalid || isLoading()">
+          @if(isLoading()) {
+            ⏳ Creating...
+          } @else {
+            ➕ Create Project
+          }
+        </button>
+        <button type="button" class="graffiti-btn graffiti-btn-secondary" (click)="onCancel()">❌ Cancel</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+@if(showCancelDialog()) {
+  <app-confirm-dialog 
+    [title]="'Cancel Project Creation'" 
+    [message]="'Are you sure you want to cancel? All data will be lost.'" 
+    (confirm)="handleCancelResponse($event)">
+  </app-confirm-dialog>
+}

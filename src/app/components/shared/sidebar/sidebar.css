@@ -1,0 +1,90 @@
+.graffiti-sidebar {
+  width: 250px;
+  background: linear-gradient(135deg, #6B21A8 0%, #1E293B 100%);
+  border-right: 4px solid #A855F7;
+  box-shadow: 4px 0 20px rgba(168, 85, 247, 0.3);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  transition: width 0.3s ease;
+  height: calc(100vh - 64px);
+  position: fixed;
+  left: 0;
+  top: 64px;
+  z-index: 99;
+  overflow-y: auto;
+}
+
+.graffiti-sidebar.collapsed {
+  width: 80px;
+}
+
+.sidebar-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex: 1;
+}
+
+.menu-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  border: 2px solid #A855F7;
+  border-radius: 8px;
+  color: #F8FAFC;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  font-weight: 600;
+  letter-spacing: 1px;
+  font-size: 13px;
+}
+
+.menu-item:hover {
+  background: rgba(168, 85, 247, 0.2);
+  box-shadow: 0 0 15px rgba(168, 85, 247, 0.4);
+  transform: translateX(4px);
+}
+
+.menu-item.active-menu {
+  background: linear-gradient(135deg, #A855F7, #EC4899);
+  color: #0F172A;
+  box-shadow: 4px 4px 0 #06B6D4;
+}
+
+.menu-icon {
+  font-size: 20px;
+  min-width: 24px;
+  text-align: center;
+}
+
+.menu-label {
+  font-size: 13px;
+  white-space: nowrap;
+}
+
+.toggle-btn {
+  align-self: flex-start;
+  margin-top: auto;
+  font-size: 18px;
+  padding: 8px 12px;
+  width: 100%;
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .graffiti-sidebar {
+    width: 70px;
+  }
+  .graffiti-sidebar.collapsed {
+    width: 70px;
+  }
+  .menu-label {
+    display: none;
+  }
+  .menu-item {
+    padding: 12px 8px;
+  }
+}

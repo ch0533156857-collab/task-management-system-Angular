@@ -1,0 +1,10 @@
+<div class="dialog-overlay">
+  <div class="dialog-card graffiti-card">
+    <h2 class="dialog-title">⚠️ {{ title() }}</h2>
+    <p class="dialog-message">{{ message() }}</p>
+    <div class="dialog-actions">
+      <button class="graffiti-btn graffiti-btn-primary" (click)="onConfirm()">✅ Confirm</button>
+      <button class="graffiti-btn graffiti-btn-secondary" (click)="onCancel()">❌ Cancel</button>
+    </div>
+  </div>
+</div>

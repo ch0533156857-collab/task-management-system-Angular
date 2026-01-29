@@ -1,0 +1,23 @@
+<div class="graffiti-container">
+  <div class="page-header">
+    <h1 class="graffiti-title">👥 Teams</h1>
+    <button class="graffiti-btn graffiti-btn-primary" (click)="onCreateTeam()">➕ Create Team</button>
+  </div>
+
+  @if (isLoading()) {
+    <app-loading-spinner [isInline]="false"></app-loading-spinner>
+  } @else if (errorMessage()) {
+    <div class="error-banner">💥 {{ errorMessage() }}</div>
+  } @else {
+    <div class="teams-grid">
+      @for (team of teams(); track team.id) {
+        <app-team-card 
+          [team]="team" 
+          (teamClicked)="navigateToTeamDetails($event)">
+        </app-team-card>
+      } @empty {
+        <div class="empty-state">📭 No teams yet. Create one to get started!</div>
+      }
+    </div>
+  }
+</div>

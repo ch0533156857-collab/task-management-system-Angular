@@ -1,0 +1,72 @@
+<div class="graffiti-container">
+  <div class="board-header">
+    <h1 class="graffiti-title">📝 Task Board</h1>
+    <button 
+      class="graffiti-btn graffiti-btn-primary" 
+      (click)="onTaskCreate()"
+      type="button">
+      ➕ Create Task
+    </button>
+  </div>
+
+  @if (isLoading()) {
+    <app-loading-spinner [isInline]="false"></app-loading-spinner>
+  } @else if (errorMessage()) {
+    <div class="error-message">{{ errorMessage() }}</div>
+  } @else {
+    <div class="task-board">
+      
+      <!-- To-Do Column -->
+      <div class="board-column">
+        <h3 class="column-title">📋 To-Do</h3>
+        <div class="tasks-list">
+          @for (task of todoTasks(); track task.id) {
+            <app-task-card 
+              [task]="task" 
+              (taskClicked)="onTaskClick($event)" 
+              (taskDeleted)="onTaskDelete($event)"
+              (taskUpdated)="loadTasks()">
+            </app-task-card>
+          } @empty {
+            <p class="empty-column">No tasks yet</p>
+          }
+        </div>
+      </div>
+
+      <!-- In Progress Column -->
+      <div class="board-column">
+        <h3 class="column-title">🔄 In Progress</h3>
+        <div class="tasks-list">
+          @for (task of inProgressTasks(); track task.id) {
+            <app-task-card 
+              [task]="task" 
+              (taskClicked)="onTaskClick($event)" 
+              (taskDeleted)="onTaskDelete($event)"
+              (taskUpdated)="loadTasks()">
+            </app-task-card>
+          } @empty {
+            <p class="empty-column">No tasks yet</p>
+          }
+        </div>
+      </div>
+
+      <!-- Done Column -->
+      <div class="board-column">
+        <h3 class="column-title">✅ Done</h3>
+        <div class="tasks-list">
+          @for (task of doneTasks(); track task.id) {
+            <app-task-card 
+              [task]="task" 
+              (taskClicked)="onTaskClick($event)" 
+              (taskDeleted)="onTaskDelete($event)"
+              (taskUpdated)="loadTasks()">
+            </app-task-card>
+          } @empty {
+            <p class="empty-column">No tasks yet</p>
+          }
+        </div>
+      </div>
+
+    </div>
+  }
+</div>

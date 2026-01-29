@@ -1,1 +1,208 @@
-/* You can add global styles to this file, and also import other style files */
+/* ═══════════════════════════════════════════════════════════════
+   GLOBAL GRAFFITI DESIGN SYSTEM
+   ═══════════════════════════════════════════════════════════════ */
+
+@import url('https://fonts.googleapis.com/css2?family=Rubik+Mono+One&family=Heebo:wght@400;700&family=Fredoka+One&display=swap');
+
+:root {
+  --color-primary-purple: #A855F7;
+  --color-hot-pink: #EC4899;
+  --color-neon-cyan: #06B6D4;
+  --color-lime-green: #84CC16;
+  --color-deep-purple: #6B21A8;
+  --color-bright-orange: #F97316;
+  --color-yellow-pop: #FACC15;
+  --color-almost-black: #0F172A;
+  --color-dark-gray: #1E293B;
+  --color-light-gray: #CBD5E1;
+  --color-off-white: #F8FAFC;
+}
+
+html, body { 
+  height: 100%;
+  margin: 0;
+  font-family: 'Heebo', system-ui, -apple-system, sans-serif;
+  background: var(--color-almost-black);
+  color: var(--color-off-white);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   GLOBAL ANIMATIONS
+   ═══════════════════════════════════════════════════════════════ */
+
+@keyframes slideInBounce {
+  0% { transform: translateX(-100%); opacity: 0; }
+  60% { transform: translateX(10%); }
+  100% { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes floatUp {
+  0% { transform: translateY(0) rotate(0deg); }
+  100% { transform: translateY(-10px) rotate(-2deg); }
+}
+
+@keyframes bounceClick {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(0.95); }
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-10px); }
+  75% { transform: translateX(10px); }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+@keyframes neonGlow {
+  0%, 100% { box-shadow: 0 0 10px rgba(168, 85, 247, 0.5), 0 0 20px rgba(168, 85, 247, 0.3); }
+  50% { box-shadow: 0 0 20px rgba(168, 85, 247, 0.8), 0 0 40px rgba(168, 85, 247, 0.6); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   GLOBAL COMPONENTS
+   ═══════════════════════════════════════════════════════════════ */
+
+.graffiti-container {
+  padding: 20px;
+  background: repeating-linear-gradient(45deg, var(--color-almost-black), var(--color-almost-black) 10px, var(--color-dark-gray) 10px, var(--color-dark-gray) 20px);
+  min-height: 100vh;
+}
+
+.graffiti-card {
+  background: linear-gradient(135deg, var(--color-dark-gray) 0%, var(--color-almost-black) 100%);
+  border: 3px solid var(--color-primary-purple);
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 0 20px rgba(168, 85, 247, 0.3);
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.graffiti-card:hover {
+  animation: floatUp 0.3s forwards;
+  box-shadow: 0 0 30px rgba(168, 85, 247, 0.5), 6px 6px 0 var(--color-hot-pink);
+}
+
+.graffiti-btn {
+  font-family: 'Fredoka One', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  text-transform: uppercase;
+  padding: 12px 24px;
+  border: 3px solid var(--color-almost-black);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  letter-spacing: 1px;
+}
+
+.graffiti-btn-primary {
+  background: linear-gradient(135deg, var(--color-neon-cyan) 0%, var(--color-lime-green) 100%);
+  color: var(--color-almost-black);
+  box-shadow: 6px 6px 0 var(--color-hot-pink);
+}
+
+.graffiti-btn-primary:hover {
+  transform: translate(-3px, -3px);
+  box-shadow: 9px 9px 0 var(--color-hot-pink), 0 0 20px var(--color-neon-cyan);
+}
+
+.graffiti-btn-secondary {
+  background: linear-gradient(135deg, var(--color-primary-purple) 0%, var(--color-hot-pink) 100%);
+  color: var(--color-off-white);
+  box-shadow: 6px 6px 0 var(--color-dark-gray);
+}
+
+.graffiti-btn-secondary:hover {
+  transform: translate(-3px, -3px);
+  box-shadow: 9px 9px 0 var(--color-dark-gray), 0 0 20px var(--color-primary-purple);
+}
+
+.graffiti-btn-danger {
+  background: linear-gradient(135deg, var(--color-bright-orange) 0%, var(--color-hot-pink) 100%);
+  color: var(--color-off-white);
+  box-shadow: 6px 6px 0 var(--color-almost-black);
+}
+
+.graffiti-btn-danger:hover {
+  transform: translate(-3px, -3px);
+  box-shadow: 9px 9px 0 var(--color-almost-black), 0 0 20px var(--color-bright-orange);
+}
+
+.error-banner {
+  background: linear-gradient(135deg, var(--color-bright-orange), var(--color-hot-pink));
+  color: var(--color-almost-black);
+  padding: 12px 16px;
+  border: 3px solid var(--color-almost-black);
+  border-radius: 8px;
+  font-weight: 700;
+  box-shadow: 0 0 20px var(--color-bright-orange);
+  animation: shake 0.3s, neonGlow 1.5s infinite;
+}
+
+.success-banner {
+  background: linear-gradient(135deg, var(--color-lime-green), var(--color-neon-cyan));
+  color: var(--color-almost-black);
+  padding: 12px 16px;
+  border: 3px solid var(--color-almost-black);
+  border-radius: 8px;
+  font-weight: 700;
+  box-shadow: 0 0 20px var(--color-lime-green);
+  animation: fadeIn 0.5s;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-dark-gray);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-primary-purple);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-hot-pink);
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   MATERIAL SNACKBAR GRAFFITI STYLING
+   ═══════════════════════════════════════════════════════════════ */
+
+.graffiti-snackbar {
+  background: linear-gradient(135deg, var(--color-primary-purple), var(--color-hot-pink)) !important;
+  border: 3px solid var(--color-neon-cyan) !important;
+  border-radius: 12px !important;
+  box-shadow: 0 0 20px rgba(168, 85, 247, 0.6), 6px 6px 0 var(--color-lime-green) !important;
+}
+
+.graffiti-snackbar .mdc-snackbar__label {
+  color: var(--color-off-white) !important;
+  font-family: 'Fredoka One', sans-serif !important;
+  font-weight: 700 !important;
+  letter-spacing: 1px !important;
+}
+
+.graffiti-snackbar .mdc-button {
+  color: var(--color-almost-black) !important;
+  font-weight: 700 !important;
+}
+
+

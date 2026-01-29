@@ -1,0 +1,182 @@
+/* ═══════════════════════════════════════════════════════════════
+   COMMENT LIST COMPONENT - GRAFFITI DESIGN
+   ═══════════════════════════════════════════════════════════════ */
+
+.comments-section {
+  padding: 20px;
+  animation: slideInBounce 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.comments-header {
+  margin-bottom: 24px;
+}
+
+.comments-title {
+  font-family: 'Fredoka One', sans-serif;
+  font-size: 24px;
+  font-weight: 900;
+  background: linear-gradient(135deg, var(--color-neon-cyan), var(--color-lime-green), var(--color-primary-purple));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin: 0 0 12px 0;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.comments-divider {
+  height: 4px;
+  background: linear-gradient(90deg, var(--color-primary-purple), var(--color-hot-pink), var(--color-neon-cyan));
+  border-radius: 2px;
+  box-shadow: 0 0 15px rgba(168, 85, 247, 0.5);
+}
+
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  padding: 40px 0;
+}
+
+.loading-text {
+  color: var(--color-neon-cyan);
+  font-family: 'Fredoka One', sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.comments-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 20px;
+}
+
+.comment-item {
+  background: linear-gradient(135deg, var(--color-dark-gray) 0%, var(--color-almost-black) 100%);
+  border: 3px solid var(--color-lime-green);
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: 0 0 15px rgba(132, 204, 22, 0.3);
+  transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  position: relative;
+  overflow: hidden;
+}
+
+.comment-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.7' numOctaves='4' seed='2'/%3E%3C/filter%3E%3Crect width='100' height='100' fill='%231E293B' filter='url(%23noise)' opacity='0.05'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 0;
+}
+
+.comment-item > * {
+  position: relative;
+  z-index: 1;
+}
+
+.comment-item:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 0 0 20px rgba(132, 204, 22, 0.5), 4px 4px 0 var(--color-neon-cyan);
+  border-color: var(--color-neon-cyan);
+}
+
+.comment-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.comment-user {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.user-badge {
+  font-size: 16px;
+  display: inline-block;
+}
+
+.user-name {
+  font-family: 'Fredoka One', sans-serif;
+  color: var(--color-primary-purple);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-size: 14px;
+}
+
+.comment-date {
+  font-family: 'Fredoka One', sans-serif;
+  color: var(--color-neon-cyan);
+  font-size: 12px;
+  font-weight: 700;
+  text-shadow: 0 0 8px rgba(6, 182, 212, 0.3);
+}
+
+.comment-body {
+  margin: 0;
+  color: var(--color-off-white);
+  font-family: 'Heebo', sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  word-break: break-word;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 40px 20px;
+  background: linear-gradient(135deg, var(--color-dark-gray) 0%, var(--color-almost-black) 100%);
+  border: 3px dashed var(--color-primary-purple);
+  border-radius: 12px;
+  box-shadow: 0 0 15px rgba(168, 85, 247, 0.2);
+}
+
+.empty-icon {
+  font-size: 48px;
+  margin: 0 0 12px 0;
+  animation: floatUp 1.5s ease-in-out infinite;
+}
+
+.empty-text {
+  color: var(--color-primary-purple);
+  font-family: 'Fredoka One', sans-serif;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  margin: 0;
+  text-transform: uppercase;
+  font-size: 14px;
+}
+
+@media (max-width: 600px) {
+  .comments-section {
+    padding: 12px;
+  }
+
+  .comments-title {
+    font-size: 18px;
+  }
+
+  .comment-item {
+    padding: 12px;
+  }
+
+  .comment-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .comment-date {
+    font-size: 11px;
+  }
+}

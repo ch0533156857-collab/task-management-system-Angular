@@ -1,0 +1,82 @@
+<div class="login-container">
+  <!-- Spray Paint Decoration -->
+  <div class="spray-decoration"></div>
+  
+  <div class="login-card">
+    <div class="card-header">
+      <h1 class="graffiti-title">🎨 Login 🎨</h1>
+      <p class="subtitle">⚡ Access Your Tasks & Teams</p>
+    </div>
+
+    @if (errorMessage()) {
+      <div class="error-banner">
+        💥 {{ errorMessage() }}
+      </div>
+    }
+
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="graffiti-form">
+      <!-- Email Field -->
+      <div class="form-group">
+        <label for="email" class="form-label">
+          📧 Email
+        </label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          formControlName="email"
+          class="graffiti-input"
+          [class.invalid]="loginForm.get('email')?.invalid && loginForm.get('email')?.touched"
+          placeholder="your@email.com"
+        />
+        @if(loginForm.get('email')?.invalid && loginForm.get('email')?.touched) {
+          <div class="error-message">
+            ⚠️ Email is invalid or missing
+          </div>
+        }
+      </div>
+
+      <!-- Password Field -->
+      <div class="form-group">
+        <label for="password" class="form-label">
+          🔐 Password
+        </label>
+        <input
+          type="password"
+          id="password"
+          name="password"
+          formControlName="password"
+          class="graffiti-input"
+          [class.invalid]="loginForm.get('password')?.invalid && loginForm.get('password')?.touched"
+          placeholder="••••••••"
+        />
+        @if(loginForm.get('password')?.invalid && loginForm.get('password')?.touched) {
+          <div class="error-message">
+            ⚠️ Password is missing or too short (min 6 characters)
+          </div>
+        }
+      </div>
+
+      <!-- Submit Button -->
+      <button 
+        type="submit" 
+        class="graffiti-btn graffiti-btn-primary"
+        [disabled]="loginForm.invalid || isLoading"
+      >
+        @if (isLoading) {
+          <app-loading-spinner [isInline]="true"></app-loading-spinner>
+          <span>Logging in ⏳...</span>
+        } @else {
+          Login 🚀
+        }
+      </button>
+    </form>
+
+    <!-- Footer Info -->
+    <div class="card-footer">
+      <p class="info-text">✨ Don't have an account? 
+        <a routerLink="/register" class="link-style">Sign up here</a>
+      </p>
+    </div>
+  </div>
+</div>

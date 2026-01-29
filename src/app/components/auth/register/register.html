@@ -1,0 +1,90 @@
+<div class="login-container">
+  <div class="spray-decoration"></div>
+  
+  <div class="login-card">
+    <div class="card-header">
+      <h1 class="graffiti-title">🎨 Register 🎨</h1>
+      <p class="subtitle">⚡ Join Our Platform</p>
+    </div>
+
+    @if (errorMessage) {
+      <div class="error-banner">
+        💥 {{ errorMessage }}
+      </div>
+    }
+
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="graffiti-form">
+      <!-- Name Field -->
+      <div class="form-group">
+        <label for="name" class="form-label">👤 Full Name</label>
+        <input
+          type="text"
+          id="name"
+          name="name"
+          formControlName="name"
+          class="graffiti-input"
+          [class.invalid]="registerForm.get('name')?.invalid && registerForm.get('name')?.touched"
+          placeholder="Your name"
+        />
+        @if(registerForm.get('name')?.invalid && registerForm.get('name')?.touched) {
+          <div class="error-message">⚠️ Name is required</div>
+        }
+      </div>
+
+      <!-- Email Field -->
+      <div class="form-group">
+        <label for="email" class="form-label">📧 Email</label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          formControlName="email"
+          class="graffiti-input"
+          [class.invalid]="registerForm.get('email')?.invalid && registerForm.get('email')?.touched"
+          placeholder="your@email.com"
+        />
+        @if(registerForm.get('email')?.invalid && registerForm.get('email')?.touched) {
+          <div class="error-message">⚠️ Email is invalid or missing</div>
+        }
+      </div>
+
+      <!-- Password Field -->
+      <div class="form-group">
+        <label for="password" class="form-label">🔐 Password</label>
+        <input
+          type="password"
+          id="password"
+          name="password"
+          formControlName="password"
+          class="graffiti-input"
+          [class.invalid]="registerForm.get('password')?.invalid && registerForm.get('password')?.touched"
+          placeholder="••••••••"
+        />
+        @if(registerForm.get('password')?.invalid && registerForm.get('password')?.touched) {
+          <div class="error-message">⚠️ Password must be at least 6 characters</div>
+        }
+      </div>
+
+      <!-- Submit Button -->
+      <button 
+        type="submit" 
+        class="graffiti-btn graffiti-btn-primary"
+        [disabled]="registerForm.invalid || isLoading"
+      >
+        @if (isLoading) {
+          <app-loading-spinner [isInline]="true"></app-loading-spinner>
+          <span>Creating Account ⏳...</span>
+        } @else {
+          Register 🚀
+        }
+      </button>
+    </form>
+
+    <!-- Footer Info -->
+    <div class="card-footer">
+      <p class="info-text">✨ Already have an account? 
+        <a routerLink="/login" class="link-style">Sign up here</a>
+    </p>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,26 @@
+<header class="graffiti-header">
+  <div class="header-content">
+    <h1 class="header-title">🎨 Task Manager</h1>
+    <div class="user-info">
+      @if(currentUser()) {
+        <div class="user-details">
+          <span class="user-name">👤 {{ currentUser()?.name }}</span>
+          <button (click)="openLogoutDialog()" class="graffiti-btn graffiti-btn-danger">Logout 🚪</button>
+        </div>
+      } @else {
+        <div class="auth-buttons">
+          <button (click)="navigateToLogin()" class="graffiti-btn graffiti-btn-primary">Login 🚀</button>
+          <button (click)="navigateToRegister()" class="graffiti-btn graffiti-btn-secondary">Register ✍️</button>
+        </div>
+      }
+    </div>
+  </div>
+</header>
+
+@if(showLogoutDialog()) {
+  <app-confirm-dialog 
+    [title]="'Logout Confirmation'" 
+    [message]="'Are you sure you want to logout?'" 
+    (confirm)="handleLogoutResponse($event)">
+  </app-confirm-dialog>
+}

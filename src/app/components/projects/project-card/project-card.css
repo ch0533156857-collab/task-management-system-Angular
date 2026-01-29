@@ -1,0 +1,80 @@
+.project-card {
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.project-card:hover {
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 8px 12px 0 #06B6D4 !important;
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.card-title {
+  font-family: 'Fredoka One', sans-serif;
+  font-size: 22px;
+  color: #A855F7;
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.card-body {
+  flex: 1;
+  margin-bottom: 20px;
+}
+
+.project-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 0;
+  border-bottom: 1px solid rgba(168, 85, 247, 0.2);
+  font-size: 14px;
+}
+
+.info-label {
+  font-weight: 600;
+  color: #CBD5E1;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.info-value {
+  color: #06B6D4;
+  font-weight: 700;
+}
+
+.project-description {
+  margin-top: 12px;
+  padding: 12px;
+  background: rgba(168, 85, 247, 0.1);
+  border-left: 3px solid #A855F7;
+  border-radius: 4px;
+}
+
+.project-description p {
+  font-size: 12px;
+  color: #CBD5E1;
+  margin: 0;
+  line-height: 1.5;
+}
+
+.view-btn {
+  width: 100%;
+  margin-top: auto;
+}
+
+@media (max-width: 600px) {
+  .project-card:hover {
+    transform: none;
+    box-shadow: 4px 4px 0 #06B6D4 !important;
+  }
+}

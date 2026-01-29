@@ -1,0 +1,51 @@
+
+
+  <div class="graffiti-card task-card" (click)="onTaskClick()">
+  <div class="card-header">
+    <h4 class="card-title">{{ task().title }}</h4>
+    <button 
+      (click)="onDeleteClick($event)" 
+      class="delete-btn"
+      [disabled]="isUpdating()"
+      type="button">
+      🗑️
+    </button>
+  </div>
+  
+  <div class="card-body">
+    <!-- Status & Priority Dropdowns -->
+    <div class="task-controls">
+      <select 
+  [(ngModel)]="task().status" 
+  (change)="onStatusChange($event)"
+  (click)="$event.stopPropagation()"
+  class="task-dropdown status-dropdown"
+  [disabled]="isUpdating()">
+  @for (option of statusOptions; track option.value) {
+    <option [value]="option.value">{{ option.label }}</option>
+  }
+</select>
+
+<select 
+  [(ngModel)]="task().priority" 
+  (change)="onPriorityChange($event)"
+  (click)="$event.stopPropagation()"
+  class="task-dropdown priority-dropdown"
+  [disabled]="isUpdating()">
+  @for (option of priorityOptions; track option.value) {
+    <option [value]="option.value">{{ option.label }}</option>
+  }
+</select>
+    </div>
+
+    <button (click)="toggleComments($event)" class="comments-toggle-btn">
+        💬 
+    </button>
+
+    @if (showComments()) {
+      <div class="comments-panel" (click)="$event.stopPropagation()">
+        <app-comment-list [taskId]="task().id"></app-comment-list>
+      </div>
+    }
+  </div>
+</div>
