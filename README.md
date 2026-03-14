@@ -12,8 +12,8 @@ A modern, **signal-based** Kanban-style task management application built with A
 ## ✨ Features
 
 ### 🎯 Core Functionality
-- **📊 Kanban Board**: Drag-and-drop task board with three columns: Todo, In Progress, and Done
-- **➕ Task CRUD Operations**: Create, read, update, and delete tasks seamlessly
+- **📊 Kanban Board**: Signal-based Kanban board with three columns: Todo, In Progress, and Done — real-time status updates via dropdowns
+- - **➕ Task CRUD Operations**: Create, read, update, and delete tasks seamlessly
 - **🔄 Real-time Status Updates**: Instantly change task status via intuitive dropdown menus
 - **⚡ Priority Management**: Set and update task priorities on the fly with real-time UI updates
 - **👥 Team & Project Management**: Organize tasks by teams and projects
