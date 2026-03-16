@@ -257,6 +257,3 @@ For support, questions, or feedback:
 - Inspired by modern Kanban and agile project management tools
 - Special thanks to the Angular and RxJS communities
 
----
-
-**Made with ✨ and 🚀 by Your Development Team**
